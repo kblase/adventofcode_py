@@ -4,7 +4,7 @@ import sys
 try:
     measurements_file_path = sys.argv[1]
     print("-------------------------------------------------------")
-    print("using specified measurements file")
+    print("Using specified measurements file")
     print("-------------------------------------------------------")
 except:
     measurements_file_path = str(Path(__file__).parent) + "/measurements_data.txt"
