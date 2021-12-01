@@ -1,6 +1,10 @@
+from pathlib import Path
+
+measurements_file_path=str(Path(__file__).parent)+'/measurements_data.txt'
+
 def read_measurements():
   global measurements
-  measurements=open('measurements').readlines()
+  measurements=open(measurements_file_path).readlines()
   measurements=[line.rstrip() for line in measurements]
 
 def find_increases():
