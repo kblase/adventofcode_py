@@ -1,9 +1,6 @@
 #  [Advent of Code](https://adventofcode.com/)
-![GitHub all releases](https://img.shields.io/github/downloads/FlachDerPlatte/adventofcode_py/total)
-![GitHub language count](https://img.shields.io/github/languages/count/FlachDerPlatte/adventofcode_py)
-![GitHub top language](https://img.shields.io/github/languages/top/FlachDerPlatte/adventofcode_py?color=yellow)
-![GitHub repo size](https://img.shields.io/tokei/lines/github/flachderplatte/adventofcode_py)
-![Github File Count](https://img.shields.io/github/directory-file-count/flachderplatte/adventofcode_py)
+
+![GitHub repo size](https://img.shields.io/github/repo-size/flachderplatte/adventofcode_py)
 [![Python 3.6](https://img.shields.io/badge/python-3.8.10-blue.svg)](https://www.python.org/downloads/release/python-3810/)
 
 Hier werden die Challanges vom Advent of Code gelöst
@@ -18,7 +15,10 @@ Da jeder Tag aus zwei Teilen besteht gibt es immer zwei Python Skripte.
 - P2_`trivialname_der_challange`.py
 
 # Beschreibungen zu den Tagen
-## [Day 1: Sonar Sweep (Part One)](Day1)
+## [Day 1: Sonar Sweep](Day1)
+### - Part One
+---
+
 You're minding your own business on a ship at sea when the overboard alarm goes off! You rush to see if you can help. Apparently, one of the Elves tripped and accidentally sent the sleigh keys flying into the ocean!
 
 Before you know it, you're inside a submarine the Elves keep ready for situations like this. It's covered in Christmas lights (because of course it is), and it even has an experimental antenna that should be able to track the keys if you can boost its signal strength high enough; there's a little meter that indicates the antenna's signal strength by displaying 0-50 stars.
@@ -66,7 +66,8 @@ In this example, there are 7 measurements that are larger than the previous meas
 
 How many measurements are larger than the previous measurement?
 
-## [Day 1: Sonar Sweep (Part Two)](Day1)
+### - Part Two
+---
 
 Considering every single measurement isn't as useful as you expected: there's just too much noise in the data.
 
@@ -106,4 +107,5 @@ In this example, there are 5 sums that are larger than the previous sum.
 Consider sums of a three-measurement sliding window. How many sums are larger than the  previous sum?
 
 
-## [Day 2: _________(Part One)](Day2)
+## [Day 2: _________](Day2)
+### - Part One
