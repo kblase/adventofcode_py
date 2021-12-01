@@ -20,26 +20,29 @@ def read_measurements():
     measurements = [line.rstrip() for line in measurements]
 
 
-def find_increases():
-    go_deeper_list = []
-    for i in range(1, len(measurements)):
-        if int(measurements[i]) > int(measurements[i - 1]):
-            go_deeper_list.append(measurements[i])
-    print("Solved by adding Elements and get length of list")
-    print("The Water depth increases", len(go_deeper_list), "times!")
-    print("------------------------")
+def add_triples():
+    global triples
+    triples = []
+    for i in range(2, len(measurements)):
+        if len(measurements) - i >= 2:
+            triples.append(
+                int(measurements[i - 2])
+                + int(measurements[i - 1])
+                + int(measurements[i])
+            )
 
 
 def find_increases_add():
     go_deeper = 0
-    for i in range(1, len(measurements)):
-        if int(measurements[i]) > int(measurements[i - 1]):
+    for i in range(1, len(triples)):
+        if int(triples[i]) > int(triples[i - 1]):
             go_deeper += 1
-    print("Solved by adding Numbers")
+    print("------------------------")
+    print("Three Measurements sliding Window:")
     print("The Water depth increases", go_deeper, "times!")
     print("------------------------")
 
 
 read_measurements()
-find_increases()
+add_triples()
 find_increases_add()
