@@ -1,6 +1,17 @@
 from pathlib import Path
+import sys
 
-measurements_file_path=str(Path(__file__).parent)+'/measurements_data.txt'
+try:
+  measurements_file_path= sys.argv[1]
+  print('-------------------------------------------------------')
+  print('using specified measurements file')
+  print('-------------------------------------------------------')
+except:
+  measurements_file_path=str(Path(__file__).parent)+'/measurements_data.txt'
+  print('-------------------------------------------------------')
+  print('Use script location for measurement data!')
+  print('other filename can be passed as cli argument')
+  print('-------------------------------------------------------')
 
 def read_measurements():
   global measurements
