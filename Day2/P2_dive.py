@@ -22,13 +22,15 @@ def read_movements():
 def move():
     position_depth = 0
     position_horizontal = 0
+    aim = 0
     for i in read_movements.movements:
         if i.split()[0] == "forward":
             position_horizontal += int(i.split()[1])
+            position_depth += aim * int(i.split()[1])
         elif i.split()[0] == "up":
-            position_depth -= int(i.split()[1])
+            aim -= int(i.split()[1])
         elif i.split()[0] == "down":
-            position_depth += int(i.split()[1])
+            aim += int(i.split()[1])
     move.product = position_depth * position_horizontal
 
 
