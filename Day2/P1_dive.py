@@ -15,35 +15,23 @@ except:
 
 
 def read_movements():
-    global movements
-    global direction
-    direction = []
-    global distance
-    distance = []
-    movements = open(movements_file_path, "r").readlines()
-    movements = [line.rstrip() for line in movements]
-    for i in movements:
-        direction.append(i.split()[0])
-        distance.append(i.split()[1])
-        # print("The direction is:", movements[i].split()[0])
-        # print("The distance is.", movements[i].split()[1])
+    read_movements.movements = open(movements_file_path, "r").readlines()
+    read_movements.movements = [line.rstrip() for line in read_movements.movements]
 
 
 def move():
-    global position_depth
-    global position_horizontal
     position_depth = 0
     position_horizontal = 0
-    for i in movements:
+    for i in read_movements.movements:
         if i.split()[0] == "forward":
             position_horizontal += int(i.split()[1])
         elif i.split()[0] == "up":
             position_depth -= int(i.split()[1])
         elif i.split()[0] == "down":
             position_depth += int(i.split()[1])
+    move.product = position_depth * position_horizontal
 
 
 read_movements()
 move()
-print("The Answer is:")
-print(position_depth * position_horizontal)
+print("The Answer is:", move.product)
