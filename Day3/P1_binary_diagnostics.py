@@ -28,11 +28,8 @@ def power_consumption():
         s.append([])
         for i in read_data.data:
             s[l].append(i[l])
-        print(Counter(s[l]).most_common())
         gamma_rate += Counter(s[l]).most_common()[0][0]
         epsilon_rate += Counter(s[l]).most_common()[1][0]
-    print(int(gamma_rate, 2))
-    print(int(epsilon_rate, 2))
     print("The Power Consumption is:", int(gamma_rate, 2) * int(epsilon_rate, 2))
 
 
