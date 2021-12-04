@@ -19,7 +19,21 @@ def read_data():
     read_data.data = [line.rstrip() for line in read_data.data]
 
 
-def power_consumption():
+def power_consumption_with_string():
+    read_data()
+    gamma_rate = ""
+    epsilon_rate = ""
+    for index in range(len(read_data.data[0])):
+        s = ""
+        for line in read_data.data:
+            s += line[index]
+        print(Counter(s).most_common())
+        gamma_rate += Counter(s).most_common()[0][0]
+        epsilon_rate += Counter(s).most_common()[1][0]
+    print("The Power Consumption is:", int(gamma_rate, 2) * int(epsilon_rate, 2))
+
+
+def power_consumption_with_array():
     read_data()
     gamma_rate = ""
     epsilon_rate = ""
@@ -33,4 +47,5 @@ def power_consumption():
     print("The Power Consumption is:", int(gamma_rate, 2) * int(epsilon_rate, 2))
 
 
-power_consumption()
+power_consumption_with_string()
+power_consumption_with_array()
