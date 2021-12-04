@@ -17,3 +17,4 @@ Da jeder Tag aus zwei Teilen besteht gibt es immer zwei Python Skripte.
 # Beschreibungen zu den Tagen
 ## [Day 1: Sonar Sweep](Day1/README.md)
 ## [Day 2: Dive](Day2/README.md)
+## [Day 3: Binary Diagnostics](Day3/README.md)
