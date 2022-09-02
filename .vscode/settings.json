@@ -1,9 +1,0 @@
-{
-    "python.pythonPath": "env/bin/python",
-    "python.defaultInterpreterPath": "env/bin/black",
-    "python.formatting.provider": "black",
-    "python.linting.enabled": true,
-    "editor.formatOnSave": true,
-    "python.terminal.activateEnvInCurrentTerminal": true,
-    "python.languageServer": "Default"
-}
