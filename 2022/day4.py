@@ -30,9 +30,9 @@ def puzzle_a(input):
 def puzzle_b(input):
     reconsider = 0
     for i in range(0, len(input), 2):
-        if (int(input[i][0]) or int(input[i][1])) > int(input[i + 1][0]) and (
-            int(input[i][0]) or int(input[i][1])
-        ) < int(input[i + 1][1]):
+        if (int(input[i + 1][0]) <= (int(input[i][0]) or int(input[i][1])) <= int(input[i + 1][1])):
+            reconsider += 1
+        elif (int(input[i][0]) <= (int(input[i+1][0]) or int(input[i+1][1])) <= int(input[i][1])):
             reconsider += 1
     return reconsider
 
