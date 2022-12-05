@@ -6,63 +6,39 @@ current_day = "5"
 
 def read_input(filename):
     with open(Path(__file__).parent/f"data_input/{filename}.txt", "r") as data:
-        lines = [line for line in data]
-    stacks =[]
+        stacks, moves = [i.splitlines() for i in data.read().split('\n\n')]
+    stacks.pop()
+    stacks = [[l[i:i+4].strip(" []\n") for i in range(0, len(l), 4)] for l in stacks]
     stacks_correct = []
-    stacklines = []
-    moveset = []
-    for l in lines:
-        if l == "\n":
-            lines.remove(l)
-            break
-        else:
-            stacklines.append(l)
-    for _ in range(0,len(stacklines)):
-        lines.pop(0)
-    stacklines.pop()
-    for l in stacklines:
-        stacks.append([l[i:i+4].strip(" []\n") for i in range(0, len(l), 4)])
     for i in range(len(stacks[0])):
         stacks_correct.append([])
-        for l in range(len(stacks)):
-            stacks_correct[i].append(stacks[l][i])
-        stacks_correct[i] = list(reversed(stacks_correct[i]))
+        stacks_correct[i] = list(reversed([stacks[l][i] for l in range(len(stacks))]))
         while "" in stacks_correct[i]:
             stacks_correct[i].remove("")
-    for i in lines:
-        moveset.append(re.findall(r'\d+', i))
-    return stacks_correct, moveset
+    stacks = stacks_correct
+    moves = [[int(l) for l in re.findall(r'\d+', i)] for i in moves]
+    return stacks, moves
 
 def puzzle_a(input):
-    tower = input[0]
-    integer_moves = []
-    for i in range(len(input[1])):
-        integer_moves.append([])
-        for l in input[1][i]:
-            integer_moves[i].append(int(l))
-    for move in integer_moves:
-        for _ in range(move[0]):
-            tower[move[2]-1].append(tower[move[1]-1][-1])
-            tower[move[1]-1].pop()
-    tops = [i[-1] for i in tower]
-    return "".join(tops)
+    stacks = input[0]
+    moves = input[1]
+    for move in moves:
+        s,f,t = move
+        for _ in range(s):
+            stacks[t-1].append(stacks[f-1].pop())
+    tops = "".join([stack[-1] for stack in stacks])
+    return tops
 
 
 def puzzle_b(input):
-    tower = input[0]
-    integer_moves = []
-    for i in range(len(input[1])):
-        integer_moves.append([])
-        for l in input[1][i]:
-            integer_moves[i].append(int(l))
-    for move in integer_moves:
-        tower[move[2]-1].extend((tower[move[1]-1][-move[0]:]))
-        i = 0
-        while i < move[0]:
-            tower[move[1]-1].pop()
-            i += 1
-    tops = [i[-1] for i in tower]
-    return "".join(tops)
+    stacks = input[0]
+    moves = input[1]
+    for move in moves:
+        s,f,t = move
+        stacks[t-1].extend((stacks[f-1][-s:]))
+        stacks[f-1] = stacks[f-1][:-s]
+    tops = "".join([stack[-1] for stack in stacks])
+    return tops
 
 def main():
     parser = ArgumentParser(
