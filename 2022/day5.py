@@ -19,6 +19,7 @@ def read_input(filename):
     moves = [[int(l) for l in re.findall(r'\d+', i)] for i in moves]
     return stacks, moves
 
+
 def puzzle_a(input):
     stacks = input[0]
     moves = input[1]
