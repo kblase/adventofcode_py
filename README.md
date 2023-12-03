@@ -11,6 +11,6 @@ Hier werden die Challenges vom Advent of Code gelöst
 ```bash
 pip3 install virtualenv
 python3 -m virtualenv venv
-. venv\bin\activate
+. venv/bin/activate
 pip3 install -r requirements.txt
 ```

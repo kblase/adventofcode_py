@@ -5,19 +5,19 @@ current_day = "3"
 
 def test_puzzle_a_example():
     filename = f"day{current_day}_ex"
-    assert puzzle_a(read_input(filename)) == 157
+    assert puzzle_a(read_input(filename)) == 4361
 
 
 def test_puzzle_b_example():
     filename = f"day{current_day}_ex"
-    assert puzzle_b(read_input(filename)) == 70
+    assert puzzle_b(read_input(filename)) == 467835
 
 
 def test_puzzle_a():
     filename = f"day{current_day}"
-    assert puzzle_a(read_input(filename)) == 7817
+    assert puzzle_a(read_input(filename)) == 521601
 
 
 def test_puzzle_b():
     filename = f"day{current_day}"
-    assert puzzle_b(read_input(filename)) == 2444
+    assert puzzle_b(read_input(filename)) == 80694070

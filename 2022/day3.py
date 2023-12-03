@@ -12,7 +12,7 @@ def read_input(filename):
         half_rucksacks.append([])
         for hr in range(0, len(i), len(i) // 2):
             # print(i[hr : hr + len(i) // 2])
-            half_rucksacks[lines.index(i)].append(i[hr : hr + len(i) // 2])
+            half_rucksacks[lines.index(i)].append(i[hr: hr + len(i) // 2])
     return half_rucksacks
 
 
@@ -32,7 +32,8 @@ def puzzle_a(input):
 def puzzle_b(input):
     sum_of_groups = 0
     for i in range(0, len(input), 3):
-        rucksacks = ["".join(input[i]), "".join(input[i + 1]), "".join(input[i + 2])]
+        rucksacks = ["".join(input[i]), "".join(
+            input[i + 1]), "".join(input[i + 2])]
         for char in set(rucksacks[0]):
             if char in rucksacks[1] and char in rucksacks[2]:
                 if char.isupper():

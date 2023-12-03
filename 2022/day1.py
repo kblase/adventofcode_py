@@ -36,10 +36,12 @@ def puzzle_b(content):
     sorted_elfs = sorted(elf_sums, reverse=True)
     return sorted_elfs[0] + sorted_elfs[1] + sorted_elfs[2]
 
+
 def main():
     parser = ArgumentParser(
         description="Löse Advend of Code Aufgaben")
-    parser.add_argument('-e','--example', action='store_true', help="Toggles Example Dataset manually")
+    parser.add_argument('-e', '--example', action='store_true',
+                        help="Toggles Example Dataset manually")
     args = parser.parse_args()
     print(f"Day {current_day}")
     filename = f"day{current_day}"
@@ -51,6 +53,7 @@ def main():
         print(f"{read_input(filename)}\n")
     print("Puzzle a:", puzzle_a(read_input(filename)))
     print("Puzzle b:", puzzle_b(read_input(filename)))
+
 
 if __name__ == "__main__":  # pragma: no cover
     main()

@@ -19,7 +19,8 @@ def puzzle_b(input_file: Path):
     triples = []
     cnt = 0
     for i in range(2, len(values)):
-        triples.append(int(values[i - 2]) + int(values[i - 1]) + int(values[i]))
+        triples.append(int(values[i - 2]) +
+                       int(values[i - 1]) + int(values[i]))
     prev_triple = triples[0]
     for triple in triples[1:]:
         if triple > prev_triple:

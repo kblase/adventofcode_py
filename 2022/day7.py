@@ -3,11 +3,13 @@ from argparse import ArgumentParser
 
 current_day = 7
 
+
 def read_input(filename):
     with open(Path(__file__).parent/f"data_input/{filename}.txt", "r") as data:
         lines = [line.strip() for line in data]
     # put data formatting here
     return lines
+
 
 def getpaths(d):
     if not isinstance(d, dict):
@@ -16,9 +18,10 @@ def getpaths(d):
         yield from ([k] + w for k, v in d.items() for w in getpaths(v))
 # result = list(getpaths(sample_dict))
 
+
 def puzzle_a(input):
     directories = {}
-    directories = {"/" : {}}
+    directories = {"/": {}}
     print(directories)
     current_dir = "/"
     print(directories[current_dir])
@@ -30,15 +33,16 @@ def puzzle_a(input):
             # elif "cd .." in line: # move up a folder
             #     nested_dirs.pop()
             #     current_dir = directories[current_dir].get()
-            else: # move down a folder
+            else:  # move down a folder
                 current_dir = line.split(" ")[-1]
                 nested_dirs.append(line.split(" ")[-1])
         else:
             if "dir" in line:
                 directories[current_dir] = {line.split(" ")[-1]}
             else:
-                directories[current_dir] = {line.split(" ")[1]:line.split(" ")[0]}
-    print (dir)
+                directories[current_dir] = {
+                    line.split(" ")[1]: line.split(" ")[0]}
+    print(dir)
     print(directories)
     return
 
@@ -46,10 +50,12 @@ def puzzle_a(input):
 def puzzle_b(input):
     return
 
+
 def main():
     parser = ArgumentParser(
         description="Löse Advend of Code Aufgaben")
-    parser.add_argument('-e','--example', action='store_true', help="Toggles Example Dataset manually")
+    parser.add_argument('-e', '--example', action='store_true',
+                        help="Toggles Example Dataset manually")
     args = parser.parse_args()
     print(f"Day {current_day}")
     filename = f"day{current_day}"
@@ -61,6 +67,7 @@ def main():
         print(f"{read_input(filename)}\n")
     print("Puzzle a:", puzzle_a(read_input(filename)))
     print("Puzzle b:", puzzle_b(read_input(filename)))
+
 
 if __name__ == "__main__":  # pragma: no cover
     main()

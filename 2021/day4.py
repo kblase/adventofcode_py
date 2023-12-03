@@ -58,6 +58,7 @@ def format_input(input_file: Path):
 
 if __name__ == "__main__":  # pragma: no cover
     print(f"Day {current_day}")
-    input_file = Path(__file__).parent / f"data_input/day{current_day}_example.txt"
+    input_file = Path(__file__).parent / \
+        f"data_input/day{current_day}_example.txt"
     print("Puzzle a:", puzzle_a(input_file))
     print("Puzzle b:", puzzle_b(input_file))

@@ -45,7 +45,8 @@ def read_input(filename):
     with open(Path(__file__).parent / f"data_input/{filename}.txt", "r") as data:
         lines = [line.strip() for line in data]
     input = list(
-        [re.match("^(\d+),(\d+) -> (\d+),(\d+)$", line).groups() for line in lines]
+        [re.match("^(\d+),(\d+) -> (\d+),(\d+)$", line).groups()
+         for line in lines]
     )
     matrix = np.zeros(
         (
