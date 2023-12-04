@@ -49,7 +49,7 @@ def main():
     print(f"Day {current_day}")
     filename = f"day{current_day}"
     if Path.is_file(Path(__file__).parent/f"data_input/{filename}.txt") and (not args.example):
-        print(f"Using real Data!")
+        print("Using real Data!")
     else:
         filename = f"day{current_day}_ex"
         print("The Example Data looks like: \n")

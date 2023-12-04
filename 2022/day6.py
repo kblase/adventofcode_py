@@ -7,7 +7,7 @@ current_day = 6
 def read_input(filename):
     with open(Path(__file__).parent/f"data_input/{filename}.txt", "r") as data:
         lines = [line.strip() for line in data]
-    line = [l for l in lines[0]]
+    line = [_ for _ in lines[0]]
     return line
 
 
@@ -32,7 +32,7 @@ def main():
     print(f"Day {current_day}")
     filename = f"day{current_day}"
     if Path.is_file(Path(__file__).parent/f"data_input/{filename}.txt") and (not args.example):
-        print(f"Using real Data!")
+        print("Using real Data!")
     else:
         filename = f"day{current_day}_ex"
         print("The Example Data looks like: \n")

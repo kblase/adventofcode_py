@@ -45,7 +45,7 @@ def read_input(filename):
     with open(Path(__file__).parent / f"data_input/{filename}.txt", "r") as data:
         lines = [line.strip() for line in data]
     input = list(
-        [re.match("^(\d+),(\d+) -> (\d+),(\d+)$", line).groups()
+        [re.match("^(\d+),(\d+) -> (\d+),(\d+)$", line).groups()  # noqa: W605
          for line in lines]
     )
     matrix = np.zeros(
@@ -68,7 +68,7 @@ def main():
     if Path.is_file(Path(__file__).parent / f"data_input/{filename}.txt") and (
         not args.example
     ):
-        print(f"Using real Data!")
+        print("Using real Data!")
     else:
         filename = f"day{current_day}_ex"
         print("The Example Data looks like: \n")

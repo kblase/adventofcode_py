@@ -3,39 +3,37 @@ from argparse import ArgumentParser
 
 current_day = "3"
 
-# line_index, char_index, l = -1,0,1 for line numbers relative to line_index
 
-
-def check_to_left(input, li, ci, l):
+def check_to_left(input, li, ci, ll):
     ''' Function to check for adjecent digits in the left directions'''
     i = 1
     number = ""
-    while ci - i >= 0 and input[li+l][ci-i].isdigit():
-        number = input[li+l][ci-i] + number
+    while ci - i >= 0 and input[li+ll][ci-i].isdigit():
+        number = input[li+ll][ci-i] + number
         i += 1
     return int(number)
 
 
-def check_to_right(input, li, ci, l):
+def check_to_right(input, li, ci, ll):
     ''' Function to check for adjecent digits in the right directions'''
     i = 1
     number = ""
-    while ci+i < len(input[0]) and input[li+l][ci+i].isdigit():
-        number = number + input[li+l][ci+i]
+    while ci+i < len(input[0]) and input[li+ll][ci+i].isdigit():
+        number = number + input[li+ll][ci+i]
         i += 1
     return int(number)
 
 
-def check_to_both_directions(input, li, ci, l):
+def check_to_both_directions(input, li, ci, ll):
     ''' Function to check for adjecent digits in both directions'''
     i = 0
     number = ""
-    while ci - i >= 0 and input[li+l][ci-i].isdigit():
-        number = input[li+l][ci-i] + number
+    while ci - i >= 0 and input[li+ll][ci-i].isdigit():
+        number = input[li+ll][ci-i] + number
         i += 1
     i = 1
-    while input[li+l][ci+i].isdigit() and ci <= len(input[li+l]):
-        number = number + input[li+l][ci+i]
+    while input[li+ll][ci+i].isdigit() and ci <= len(input[li+ll]):
+        number = number + input[li+ll][ci+i]
         i += 1
     return int(number)
 
@@ -62,21 +60,21 @@ def puzzle_a(input):
         if input[li][ci+1].isdigit():
             sum_numbers += check_to_right(input, li, ci, 0)
         # check for numbers over and under the symbol
-        for l in -1, 1:
+        for ll in -1, 1:
             # directly above/underneath
-            if input[li+l][ci].isdigit():
-                sum_numbers += check_to_both_directions(input, li, ci, l)
+            if input[li+ll][ci].isdigit():
+                sum_numbers += check_to_both_directions(input, li, ci, ll)
             # NOT directly above/underneath but -1 AND +1 off in char_index
-            elif input[li+l][ci-1].isdigit() and input[li+l][ci+1].isdigit():
-                sum_numbers += check_to_left(input, li, ci, l)
-                sum_numbers += check_to_right(input, li, ci, l)
+            elif input[li+ll][ci-1].isdigit() and input[li+ll][ci+1].isdigit():
+                sum_numbers += check_to_left(input, li, ci, ll)
+                sum_numbers += check_to_right(input, li, ci, ll)
             else:
                 # just +1 off in char_index
-                if input[li+l][ci+1].isdigit():
-                    sum_numbers += check_to_right(input, li, ci, l)
+                if input[li+ll][ci+1].isdigit():
+                    sum_numbers += check_to_right(input, li, ci, ll)
                 # just -1 off in char_index
-                if input[li+l][ci-1].isdigit():
-                    sum_numbers += check_to_left(input, li, ci, l)
+                if input[li+ll][ci-1].isdigit():
+                    sum_numbers += check_to_left(input, li, ci, ll)
     return sum_numbers
 
 
@@ -97,22 +95,22 @@ def puzzle_b(input):
             if input[li][ci+1].isdigit():
                 gear_numbers.append(check_to_right(input, li, ci, 0))
             # check for numbers over and under the symbol
-            for l in -1, 1:
+            for ll in -1, 1:
                 # directly above/underneath
-                if input[li+l][ci].isdigit():
+                if input[li+ll][ci].isdigit():
                     gear_numbers.append(
-                        check_to_both_directions(input, li, ci, l))
+                        check_to_both_directions(input, li, ci, ll))
                 # NOT directly above/underneath but -1 AND +1 off in char_index
-                elif input[li+l][ci-1].isdigit() and input[li+l][ci+1].isdigit():
-                    gear_numbers.append(check_to_left(input, li, ci, l))
-                    gear_numbers.append(check_to_right(input, li, ci, l))
+                elif input[li+ll][ci-1].isdigit() and input[li+ll][ci+1].isdigit():
+                    gear_numbers.append(check_to_left(input, li, ci, ll))
+                    gear_numbers.append(check_to_right(input, li, ci, ll))
                 else:
                     # just +1 off in char_index
-                    if input[li+l][ci+1].isdigit():
-                        gear_numbers.append(check_to_right(input, li, ci, l))
+                    if input[li+ll][ci+1].isdigit():
+                        gear_numbers.append(check_to_right(input, li, ci, ll))
                     # just -1 off in char_index
-                    if input[li+l][ci-1].isdigit():
-                        gear_numbers.append(check_to_left(input, li, ci, l))
+                    if input[li+ll][ci-1].isdigit():
+                        gear_numbers.append(check_to_left(input, li, ci, ll))
             if len(gear_numbers) == 2:
                 gear_faktor = gear_numbers[0] * gear_numbers[1]
                 gear_result += gear_faktor
@@ -128,7 +126,7 @@ def main():
     print(f"Day {current_day}")
     filename = f"day{current_day}"
     if Path.is_file(Path(__file__).parent/f"data_input/{filename}.txt") and (not args.example):
-        print(f"Using real Data!")
+        print("Using real Data!")
     else:
         filename = f"day{current_day}_ex"
         print("The Example Data looks like: \n")

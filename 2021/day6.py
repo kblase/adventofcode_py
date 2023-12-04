@@ -15,11 +15,11 @@ def read_input(filename):
 def puzzle_a(input):
     for i in range(80):
         new_fish = 0
-        for l in range(len(input)):
-            input[l] -= 1
-            if input[l] < 0:
+        for _ in range(len(input)):
+            input[_] -= 1
+            if input[_] < 0:
                 new_fish += 1
-                input[l] = 6
+                input[_] = 6
         for new in range(new_fish):
             input.append(8)
     return len(input)
@@ -44,7 +44,7 @@ def main():
     if Path.is_file(Path(__file__).parent / f"data_input/{filename}.txt") and (
         not args.example
     ):
-        print(f"Using real Data!")
+        print("Using real Data!")
     else:
         filename = f"day{current_day}_ex"
         print("The Example Data looks like: \n")

@@ -14,8 +14,8 @@ def read_input(filename):
 
 def puzzle_a(input):
     calibration_value = 0
-    for l in input:
-        numbers = re.findall('\d', l)
+    for _ in input:
+        numbers = re.findall('\d', _)  # noqa: W605
         line_sum = numbers[0] + numbers[-1]
         calibration_value += int(line_sum)
     return calibration_value
@@ -34,11 +34,11 @@ def puzzle_b(input):
         "nine": "n9e"
     }
     translated_list = []
-    for l in input:
+    for line in input:
         for word, integer in translation_dict.items():
-            if word in l:
-                l = l.replace(word, integer)
-        translated_list.append(l)
+            if word in line:
+                line = line.replace(word, integer)
+        translated_list.append(line)
     return puzzle_a(translated_list)
 
 
@@ -51,7 +51,7 @@ def main():
     print(f"Day {current_day}")
     filename = f"day{current_day}"
     if Path.is_file(Path(__file__).parent/f"data_input/{filename}.txt") and (not args.example):
-        print(f"Using real Data!")
+        print("Using real Data!")
         print("Puzzle a:", puzzle_a(read_input(filename)))
         print("Puzzle b:", puzzle_b(read_input(filename)))
     else:

@@ -9,17 +9,17 @@ def read_input(filename):
     with open(Path(__file__).parent/f"data_input/{filename}.txt", "r") as data:
         stacks, moves = [i.splitlines() for i in data.read().split('\n\n')]
     stacks.pop()
-    stacks = [[l[i:i+4].strip(" []\n")
-               for i in range(0, len(l), 4)] for l in stacks]
+    stacks = [[_[i:i+4].strip(" []\n")
+               for i in range(0, len(_), 4)] for _ in stacks]
     stacks_correct = []
     for i in range(len(stacks[0])):
         stacks_correct.append([])
-        stacks_correct[i] = list(reversed([stacks[l][i]
-                                 for l in range(len(stacks))]))
+        stacks_correct[i] = list(reversed([stacks[_][i]
+                                 for _ in range(len(stacks))]))
         while "" in stacks_correct[i]:
             stacks_correct[i].remove("")
     stacks = stacks_correct
-    moves = [[int(l) for l in re.findall(r'\d+', i)] for i in moves]
+    moves = [[int(_) for _ in re.findall(r'\d+', i)] for i in moves]
     return stacks, moves
 
 
@@ -54,7 +54,7 @@ def main():
     print(f"Day {current_day}")
     filename = f"day{current_day}"
     if Path.is_file(Path(__file__).parent/f"data_input/{filename}.txt") and (not args.example):
-        print(f"Using real Data!")
+        print("Using real Data!")
     else:
         filename = f"day{current_day}_ex"
         print("The Example Data looks like: \n")
